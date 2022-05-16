@@ -6,8 +6,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                // sh 'docker stop contenedor' || echo "No hay contenedor corriendo"
-                // sh 'docker rm contenedor' || echo "No hay contenedor para borrar"
+                sh 'docker stop contenedor' || echo "No hay contenedor corriendo"
+                sh 'docker rm contenedor' || echo "No hay contenedor para borrar"
                 sh 'docker build -t mgiselle/${JOB_NAME}:v${BUILD_NUMBER} .'
             }
         }
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 80:3000 --name miappnodejs mgiselle/${JOB_NAME}:latest'
+                sh 'docker run -d -p 80:3000 --name appnodejs mgiselle/${JOB_NAME}:latest'
             }
         }
 
