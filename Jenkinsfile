@@ -6,8 +6,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker stop contenedor' || echo "No hay contenedor corriendo"
-                sh 'docker rm contenedor' || echo "No hay contenedor para borrar"
+                // sh 'docker stop contenedor' || echo "No hay contenedor corriendo"
+                // sh 'docker rm contenedor' || echo "No hay contenedor para borrar"
                 sh 'docker build -t mgiselle/${JOB_NAME}:v${BUILD_NUMBER} .'
             }
         }
